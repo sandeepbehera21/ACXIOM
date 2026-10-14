@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import ErrorAlert from '../components/ErrorAlert'
 import FormField from '../components/FormField'
+import PublicNavbar from '../components/PublicNavbar'
 import { useForm } from '../components/useForm'
 import { useAuth } from '../services/AuthContext'
 import { register } from '../services/authService'
@@ -43,7 +44,7 @@ export default function RegisterPage() {
   )
 
   if (!loading && user) {
-    return <Navigate to="/" replace />
+    return <Navigate to="/dashboard" replace />
   }
 
   async function handleSubmit(event) {
@@ -69,98 +70,167 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="axc-auth-page">
-      <div className="axc-auth-card">
-        <div className="axc-auth-card__header">
-          <span className="axc-brand-mark" aria-hidden="true" />
-          <h1>AcxiomCRM</h1>
-        </div>
+    <div className="axc-auth-wrapper">
+      {/* Top Navbar */}
+      <PublicNavbar activePage="register" />
 
-        <div className="axc-auth-card__body">
-          <h2 className="axc-page-title mb-1">Create account</h2>
-          <p className="axc-page-subtitle mb-3">
-            New accounts are created with the Sales Executive role. An
-            administrator can change your role afterwards.
-          </p>
-
-          {formError && (
-            <div className="mb-3">
-              <ErrorAlert message={formError} onDismiss={() => setFormError('')} />
+      {/* Main Container */}
+      <main className="axc-auth-container">
+        <div className="axc-auth-grid">
+          {/* Form Card */}
+          <div className="axc-auth-box">
+            <div className="mb-4">
+              <span className="badge bg-success-subtle text-success fw-semibold px-2 py-1 rounded-pill mb-2" style={{ fontSize: '11px' }}>
+                Join AcxiomCRM
+              </span>
+              <h1 className="h3 fw-bold text-dark mb-1">Create an account</h1>
+              <p className="text-muted small mb-0">
+                New accounts are initialized with Sales Executive permissions.
+              </p>
             </div>
-          )}
 
-          <form onSubmit={handleSubmit} noValidate>
-            <FormField
-              label="Full name"
-              name="name"
-              required
-              autoComplete="name"
-              value={values.name}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={errors.name}
-              wrapperClassName="mb-3"
-            />
+            {formError && (
+              <div className="mb-3">
+                <ErrorAlert message={formError} onDismiss={() => setFormError('')} />
+              </div>
+            )}
 
-            <FormField
-              label="Email"
-              name="email"
-              type="email"
-              required
-              autoComplete="email"
-              value={values.email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={errors.email}
-              wrapperClassName="mb-3"
-            />
+            <form onSubmit={handleSubmit} noValidate>
+              <FormField
+                label="Full name"
+                name="name"
+                required
+                autoComplete="name"
+                placeholder="Jane Doe"
+                value={values.name}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={errors.name}
+                wrapperClassName="mb-3"
+              />
 
-            <FormField
-              label="Password"
-              name="password"
-              type="password"
-              required
-              autoComplete="new-password"
-              value={values.password}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={errors.password}
-              help="At least 8 characters, with an uppercase letter, a lowercase letter, a digit and a special character."
-              wrapperClassName="mb-3"
-            />
+              <FormField
+                label="Email address"
+                name="email"
+                type="email"
+                required
+                autoComplete="email"
+                placeholder="jane@example.com"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={errors.email}
+                wrapperClassName="mb-3"
+              />
 
-            <FormField
-              label="Confirm password"
-              name="confirmPassword"
-              type="password"
-              required
-              autoComplete="new-password"
-              value={values.confirmPassword}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={errors.confirmPassword}
-              wrapperClassName="mb-3"
-            />
+              <FormField
+                label="Password"
+                name="password"
+                type="password"
+                required
+                autoComplete="new-password"
+                placeholder="Minimum 8 characters"
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={errors.password}
+                help="Requires uppercase, lowercase, digit, and special character."
+                wrapperClassName="mb-3"
+              />
 
-            <button
-              type="submit"
-              className="btn btn-axc-primary w-100"
-              disabled={submitting}
-            >
-              {submitting ? 'Creating account…' : 'Create account'}
-            </button>
-          </form>
+              <FormField
+                label="Confirm password"
+                name="confirmPassword"
+                type="password"
+                required
+                autoComplete="new-password"
+                placeholder="Re-enter your password"
+                value={values.confirmPassword}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={errors.confirmPassword}
+                wrapperClassName="mb-4"
+              />
 
-          <div className="axc-auth-footer d-flex justify-content-between align-items-center">
-            <div>
-              Already registered? <Link to="/login">Sign in</Link>
+              <button
+                type="submit"
+                className="btn btn-lg axc-btn-glow w-100 py-2 fw-semibold"
+                style={{ borderRadius: '10px' }}
+                disabled={submitting}
+              >
+                {submitting ? 'Creating account…' : 'Create Free Account &rarr;'}
+              </button>
+            </form>
+
+            <div className="d-flex justify-content-between align-items-center mt-4 pt-3 border-top small text-muted">
+              <div>
+                Already have an account?{' '}
+                <Link to="/login" className="fw-semibold text-primary text-decoration-none">
+                  Sign in
+                </Link>
+              </div>
+              <div>
+                <Link to="/" className="text-secondary text-decoration-none">
+                  &larr; Back to Home
+                </Link>
+              </div>
             </div>
-            <div>
-              <Link to="/landing">&larr; Back to Home</Link>
+          </div>
+
+          {/* Right Showcase Panel (Visible on Desktop) */}
+          <div className="axc-auth-showcase d-none d-lg-block">
+            <span className="badge bg-primary-subtle text-primary fw-semibold px-3 py-1 rounded-pill mb-3" style={{ fontSize: '11px' }}>
+              Why AcxiomCRM?
+            </span>
+            <h2 className="h4 fw-bold text-white mb-2">
+              Empower Your Full Sales Team
+            </h2>
+            <p className="text-light text-opacity-75 small mb-4">
+              Everything built with rigorous enterprise standards and bank-grade data security.
+            </p>
+
+            <div className="axc-showcase-item">
+              <div className="axc-showcase-icon">👥</div>
+              <div>
+                <div className="fw-semibold text-white small">Customer 360&deg; Profiles</div>
+                <div className="text-muted" style={{ fontSize: '12px' }}>
+                  Manage complete customer relationships with full activity and opportunity history.
+                </div>
+              </div>
+            </div>
+
+            <div className="axc-showcase-item">
+              <div className="axc-showcase-icon">📅</div>
+              <div>
+                <div className="fw-semibold text-white small">Smart Follow-Up Scheduling</div>
+                <div className="text-muted" style={{ fontSize: '12px' }}>
+                  Guaranteed date compliance: never miss a critical client touchpoint.
+                </div>
+              </div>
+            </div>
+
+            <div className="axc-showcase-item">
+              <div className="axc-showcase-icon">🛡️</div>
+              <div>
+                <div className="fw-semibold text-white small">Enterprise Audit Logging</div>
+                <div className="text-muted" style={{ fontSize: '12px' }}>
+                  Every login and record transition is permanently logged for full governance.
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-4 pt-3 border-top border-light border-opacity-10">
+              <div className="text-warning small mb-1">★★★★★</div>
+              <div className="text-white fst-italic small">
+                &ldquo;Setting up our sales pipeline took minutes. The conversion workflow is seamless.&rdquo;
+              </div>
+              <div className="text-muted" style={{ fontSize: '11px' }}>
+                AcxiomCRM Enterprise Edition
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   )
 }
