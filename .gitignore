@@ -1,7 +1,9 @@
-# Maven & Java
+# Compiled class files & build directories
 target/
 backend/target/
 *.class
+
+# Package files
 *.jar
 *.war
 *.nar
@@ -9,23 +11,41 @@ backend/target/
 *.zip
 *.tar.gz
 *.rar
+!.mvn/wrapper/maven-wrapper.jar
 
-# Node & Frontend
+# Node & Frontend dependencies & build artifacts
 node_modules/
 frontend/node_modules/
 frontend/dist/
 frontend/.cache/
 .eslintcache
+.vite/
 
-# Tooling & Scratch
+# Environment & credentials
+.env
+.env.local
+.env.*.local
+*.env
+cookies.txt
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+*.mv.db
+*.trace.db
+
+# Tooling, Logs & Scratch
 .tools/
 .claude/
+.gemini/
 *.log
 scratch/
 
-# IDE & OS
+# IDE & OS files
 .idea/
 *.iml
 .vscode/
 .DS_Store
 Thumbs.db
+Desktop.ini
