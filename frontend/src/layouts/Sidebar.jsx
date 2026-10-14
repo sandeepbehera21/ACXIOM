@@ -20,7 +20,7 @@ const NAV_GROUPS = [
     label: 'Overview',
     items: [
       {
-        to: '/',
+        to: '/dashboard',
         label: 'Dashboard',
         end: true,
         icon: <DashboardIcon />,

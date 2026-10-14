@@ -151,8 +151,13 @@ export default function RegisterPage() {
             </button>
           </form>
 
-          <div className="axc-auth-footer">
-            Already registered? <Link to="/login">Sign in</Link>
+          <div className="axc-auth-footer d-flex justify-content-between align-items-center">
+            <div>
+              Already registered? <Link to="/login">Sign in</Link>
+            </div>
+            <div>
+              <Link to="/landing">&larr; Back to Home</Link>
+            </div>
           </div>
         </div>
       </div>

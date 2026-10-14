@@ -121,8 +121,49 @@ export default function LoginPage() {
             </button>
           </form>
 
-          <div className="axc-auth-footer">
-            Don&apos;t have an account? <Link to="/register">Create one</Link>
+          <div className="axc-auth-footer d-flex justify-content-between align-items-center mb-3">
+            <div>
+              Don&apos;t have an account? <Link to="/register">Create one</Link>
+            </div>
+            <div>
+              <Link to="/landing">&larr; Back to Home</Link>
+            </div>
+          </div>
+
+          <div className="pt-3 border-top text-center">
+            <div className="small text-muted mb-2">Quick Demo Accounts (Autofill):</div>
+            <div className="d-flex justify-content-center gap-2 flex-wrap">
+              <button
+                type="button"
+                className="btn btn-sm btn-outline-secondary"
+                onClick={() => {
+                  handleChange({ target: { name: 'email', value: 'manager@acxiomcrm.local' } })
+                  handleChange({ target: { name: 'password', value: 'Manager@123' } })
+                }}
+              >
+                Manager
+              </button>
+              <button
+                type="button"
+                className="btn btn-sm btn-outline-secondary"
+                onClick={() => {
+                  handleChange({ target: { name: 'email', value: 'admin@acxiomcrm.local' } })
+                  handleChange({ target: { name: 'password', value: 'Admin@123' } })
+                }}
+              >
+                Admin
+              </button>
+              <button
+                type="button"
+                className="btn btn-sm btn-outline-secondary"
+                onClick={() => {
+                  handleChange({ target: { name: 'email', value: 'sales@acxiomcrm.local' } })
+                  handleChange({ target: { name: 'password', value: 'Sales@123' } })
+                }}
+              >
+                Sales Exec
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -954,3 +954,230 @@ a:hover {
   color: var(--axc-navy-800);
   letter-spacing: -0.02em;
 }
+
+/* ------------------------------------------------------------- landing page */
+
+.axc-landing {
+  min-height: 100vh;
+  background-color: #f8fafc;
+  color: #1e293b;
+  display: flex;
+  flex-direction: column;
+}
+
+.axc-landing-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(17, 28, 46, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 14px 0;
+}
+
+.axc-landing-nav .axc-brand-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.axc-landing-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.axc-landing-nav-links a {
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.axc-landing-nav-links a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.axc-landing-hero {
+  background: linear-gradient(135deg, #0b1320 0%, #17253a 50%, #1b2a41 100%);
+  color: #ffffff;
+  padding: 72px 0 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.axc-landing-hero::after {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(15, 155, 142, 0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.axc-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 14px;
+  border-radius: 9999px;
+  background: rgba(15, 155, 142, 0.18);
+  border: 1px solid rgba(15, 155, 142, 0.4);
+  color: #2dd4bf;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  letter-spacing: 0.02em;
+}
+
+.axc-hero-title {
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin-bottom: 18px;
+}
+
+.axc-hero-subtitle {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #cbd5e1;
+  max-width: 620px;
+  margin-bottom: 28px;
+}
+
+.axc-landing-section {
+  padding: 64px 0;
+}
+
+.axc-section-heading {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.axc-section-subheading {
+  font-size: 15px;
+  color: #64748b;
+  max-width: 600px;
+  margin-bottom: 36px;
+}
+
+.axc-feature-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.axc-feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.axc-feature-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(15, 155, 142, 0.12);
+  color: #0f9b8e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.axc-feature-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.axc-feature-desc {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.axc-demo-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.axc-demo-card:hover {
+  border-color: #0f9b8e;
+}
+
+.axc-landing-cta {
+  background: linear-gradient(135deg, #1b2a41 0%, #0f172a 100%);
+  color: #ffffff;
+  border-radius: 16px;
+  padding: 48px 32px;
+  text-align: center;
+  margin: 40px 0;
+}
+
+.axc-landing-footer {
+  background: #0b1320;
+  color: #94a3b8;
+  padding: 32px 0 24px;
+  font-size: 13px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ---------------------------------------------------------------- home page */
+
+.axc-home-welcome {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+.axc-quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.axc-quick-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 6px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.axc-quick-action-btn:hover {
+  border-color: #0f9b8e;
+  color: #0f9b8e;
+  background: #f0fdfa;
+  text-decoration: none;
+}
+

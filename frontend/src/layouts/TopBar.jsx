@@ -54,6 +54,14 @@ export default function TopBar({ user, onToggleSidebar }) {
 
       <span className="axc-topbar__spacer" />
 
+      <a
+        href="/landing"
+        className="btn btn-sm btn-link text-secondary text-decoration-none me-2 d-none d-sm-inline"
+        title="View public landing page"
+      >
+        Public Site
+      </a>
+
       <button
         type="button"
         className="btn btn-sm btn-outline-axc"
