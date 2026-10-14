@@ -180,7 +180,7 @@ export default function LoginPage() {
                 style={{ borderRadius: '10px' }}
                 disabled={submitting || Boolean(quickLogging)}
               >
-                {submitting ? 'Signing in…' : 'Sign in to CRM &rarr;'}
+                {submitting ? 'Signing in…' : 'Sign in to CRM →'}
               </button>
             </form>
 
@@ -193,7 +193,7 @@ export default function LoginPage() {
               </div>
               <div>
                 <Link to="/" className="text-secondary text-decoration-none">
-                  &larr; Back to Home
+                  ← Back to Home
                 </Link>
               </div>
             </div>

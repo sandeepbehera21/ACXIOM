@@ -158,7 +158,7 @@ export default function RegisterPage() {
                 style={{ borderRadius: '10px' }}
                 disabled={submitting}
               >
-                {submitting ? 'Creating account…' : 'Create Free Account &rarr;'}
+                {submitting ? 'Creating account…' : 'Create Free Account →'}
               </button>
             </form>
 
@@ -171,7 +171,7 @@ export default function RegisterPage() {
               </div>
               <div>
                 <Link to="/" className="text-secondary text-decoration-none">
-                  &larr; Back to Home
+                  ← Back to Home
                 </Link>
               </div>
             </div>

@@ -68,7 +68,7 @@ export default function LandingPage() {
                     to="/dashboard"
                     className="btn btn-lg axc-btn-glow px-4 py-3 rounded-3"
                   >
-                    Go to Your Workspace &rarr;
+                    Go to Your Workspace →
                   </Link>
                 ) : (
                   <>
@@ -451,7 +451,7 @@ export default function LandingPage() {
               </div>
 
               <Link to="/dashboard" className="btn btn-lg axc-btn-glow px-4 py-3 rounded-3">
-                Inspect Real-Time Analytics &rarr;
+                Inspect Real-Time Analytics →
               </Link>
             </div>
 
@@ -550,7 +550,7 @@ export default function LandingPage() {
           <div className="d-flex justify-content-center gap-3">
             {user ? (
               <Link to="/dashboard" className="btn btn-lg axc-btn-glow px-4 py-3 rounded-3">
-                Open CRM Workspace &rarr;
+                Open CRM Workspace →
               </Link>
             ) : (
               <>
