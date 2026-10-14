@@ -32,7 +32,7 @@ export default function LandingPage() {
 
   return (
     <div className="axc-landing">
-      {/* Navigation */}
+      {/* Sticky Glass Navbar */}
       <header className="axc-landing-nav">
         <div className="container d-flex justify-content-between align-items-center">
           <Link
@@ -51,17 +51,25 @@ export default function LandingPage() {
             <a href="#security">Security</a>
           </nav>
 
-          <div className="d-flex align-items-center gap-2">
+          <div className="d-flex align-items-center gap-3">
             {user ? (
-              <Link to="/dashboard" className="btn btn-sm btn-axc-primary">
+              <Link to="/dashboard" className="btn btn-sm axc-btn-glow px-3 py-2">
                 Open CRM Dashboard &rarr;
               </Link>
             ) : (
               <>
-                <Link to="/login" className="btn btn-sm btn-outline-light">
+                <Link
+                  to="/login"
+                  className="btn btn-sm btn-outline-light px-3 py-2"
+                  style={{ borderRadius: '8px', borderColor: 'rgba(255,255,255,0.2)' }}
+                >
                   Sign in
                 </Link>
-                <Link to="/register" className="btn btn-sm btn-axc-primary">
+                <Link
+                  to="/register"
+                  className="btn btn-sm axc-btn-glow px-3 py-2"
+                  style={{ borderRadius: '8px' }}
+                >
                   Get started
                 </Link>
               </>
@@ -73,14 +81,17 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section className="axc-landing-hero">
         <div className="container">
-          <div className="row align-items-center">
-            <div className="col-12 col-lg-8">
-              <span className="axc-hero-badge">
-                <span>&#9889;</span> Enterprise CRM &middot; Java 17 &middot; Spring Boot 3 &middot; React 19
-              </span>
+          <div className="row align-items-center g-5">
+            <div className="col-12 col-lg-7">
+              <div className="axc-hero-badge">
+                <span className="axc-pulse-dot" />
+                <span>Enterprise Platform &middot; Java 17 &middot; Spring Boot 3 &middot; React 19</span>
+              </div>
+
               <h1 className="axc-hero-title">
-                Next-Generation CRM for High-Velocity Sales &amp; Customer Success
+                Next-Generation CRM for <span className="axc-gradient-text">High-Velocity Sales</span> &amp; Customer Success
               </h1>
+
               <p className="axc-hero-subtitle">
                 A unified, role-based CRM covering the full customer lifecycle:
                 intelligent lead capture, stage-weighted opportunity forecasting,
@@ -88,16 +99,16 @@ export default function LandingPage() {
               </p>
 
               {quickError && (
-                <div className="alert alert-danger py-2 px-3 mb-3" style={{ maxWidth: '540px' }}>
+                <div className="alert alert-danger py-2 px-3 mb-4 rounded-3" style={{ maxWidth: '540px' }}>
                   {quickError}
                 </div>
               )}
 
-              <div className="d-flex flex-wrap gap-3">
+              <div className="d-flex flex-wrap gap-3 align-items-center">
                 {user ? (
                   <Link
                     to="/dashboard"
-                    className="btn btn-lg btn-axc-primary px-4"
+                    className="btn btn-lg axc-btn-glow px-4 py-3 rounded-3"
                   >
                     Go to Your Workspace &rarr;
                   </Link>
@@ -105,81 +116,173 @@ export default function LandingPage() {
                   <>
                     <Link
                       to="/login"
-                      className="btn btn-lg btn-axc-primary px-4"
+                      className="btn btn-lg axc-btn-glow px-4 py-3 rounded-3"
                     >
                       Sign in to CRM
                     </Link>
                     <a
                       href="#demo"
-                      className="btn btn-lg btn-outline-light px-4"
+                      className="btn btn-lg btn-outline-light px-4 py-3 rounded-3"
+                      style={{ borderColor: 'rgba(255,255,255,0.25)', background: 'rgba(255,255,255,0.03)' }}
                     >
-                      Explore 1-Click Demo Logins
+                      ⚡ 1-Click Demo Logins
                     </a>
                   </>
                 )}
               </div>
             </div>
 
-            <div className="col-12 col-lg-4 mt-5 mt-lg-0">
-              <div className="p-4 rounded-3 text-white" style={{ background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.12)' }}>
-                <h6 className="text-uppercase text-muted fw-bold mb-3" style={{ fontSize: '11px', letterSpacing: '0.08em' }}>
-                  Live System Status
-                </h6>
-                <div className="d-flex align-items-center gap-2 mb-2">
-                  <span className="badge bg-success-subtle text-success border border-success-subtle">
-                    Operational
-                  </span>
-                  <span className="text-white small">All CRM Services Online</span>
+            {/* Right Column: Live Mock CRM Dashboard Preview */}
+            <div className="col-12 col-lg-5">
+              <div className="axc-hero-preview-card">
+                <div className="axc-preview-header">
+                  <div className="axc-preview-dots">
+                    <span className="axc-dot" style={{ backgroundColor: '#ef4444' }} />
+                    <span className="axc-dot" style={{ backgroundColor: '#f59e0b' }} />
+                    <span className="axc-dot" style={{ backgroundColor: '#10b981' }} />
+                  </div>
+                  <div className="small fw-semibold text-light text-opacity-75">
+                    AcxiomCRM Live Pipeline
+                  </div>
+                  <div className="d-flex align-items-center gap-1">
+                    <span className="axc-pulse-dot" />
+                    <span className="small text-success" style={{ fontSize: '11px' }}>Port 8080 Active</span>
+                  </div>
                 </div>
-                <hr style={{ borderColor: 'rgba(255, 255, 255, 0.1)' }} />
-                <div className="small text-muted mb-1">Architecture</div>
-                <div className="text-white fw-semibold small mb-2">Spring Boot 3.5.16 &middot; MySQL 8 &middot; React 19</div>
-                <div className="small text-muted mb-1">Security Standard</div>
-                <div className="text-white fw-semibold small mb-3">BCrypt &middot; Double-Submit CSRF &middot; Session Cookie</div>
-                <div className="small text-muted mb-1">Test Suite</div>
-                <div className="text-white fw-semibold small">39 / 39 Automated Acceptance Tests Passing</div>
+
+                <div className="p-4">
+                  {/* Top Metric Preview */}
+                  <div className="d-flex justify-content-between align-items-end mb-4 pb-3 border-bottom border-light border-opacity-10">
+                    <div>
+                      <div className="text-muted small text-uppercase fw-semibold" style={{ fontSize: '11px', letterSpacing: '0.06em' }}>
+                        Weighted Pipeline Forecast
+                      </div>
+                      <div className="fs-2 fw-bold text-white mt-1">
+                        $284,500<span className="fs-6 text-muted fw-normal">.00</span>
+                      </div>
+                    </div>
+                    <span className="badge bg-success bg-opacity-25 text-success border border-success border-opacity-25 px-2 py-1 small">
+                      &uarr; 24.8% this month
+                    </span>
+                  </div>
+
+                  {/* Pipeline Stage Bars */}
+                  <div className="mb-4">
+                    <div className="d-flex justify-content-between small text-muted mb-1">
+                      <span>Proposal Stage (60% Prob)</span>
+                      <span className="text-white fw-semibold">$142,000</span>
+                    </div>
+                    <div className="progress mb-3" style={{ height: '6px', background: 'rgba(255,255,255,0.1)' }}>
+                      <div className="progress-bar bg-info" style={{ width: '65%' }} />
+                    </div>
+
+                    <div className="d-flex justify-content-between small text-muted mb-1">
+                      <span>Negotiation Stage (80% Prob)</span>
+                      <span className="text-white fw-semibold">$98,500</span>
+                    </div>
+                    <div className="progress mb-2" style={{ height: '6px', background: 'rgba(255,255,255,0.1)' }}>
+                      <div className="progress-bar bg-primary" style={{ width: '80%' }} />
+                    </div>
+                  </div>
+
+                  {/* Live Activity Feeds */}
+                  <div className="p-3 rounded-3" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                    <div className="small text-muted text-uppercase fw-bold mb-2" style={{ fontSize: '10px', letterSpacing: '0.05em' }}>
+                      Recent Operations
+                    </div>
+                    <div className="d-flex justify-content-between align-items-center mb-2">
+                      <div className="small text-white">Acme Global &middot; Follow-up scheduled</div>
+                      <span className="badge bg-info-subtle text-info border border-info-subtle" style={{ fontSize: '10px' }}>Tomorrow</span>
+                    </div>
+                    <div className="d-flex justify-content-between align-items-center">
+                      <div className="small text-white">Apex Industries &middot; Converted to Customer</div>
+                      <span className="badge bg-success-subtle text-success border border-success-subtle" style={{ fontSize: '10px' }}>Won $45,000</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 1-Click Demo Accounts */}
-      <section id="demo" className="axc-landing-section bg-white border-bottom">
+      {/* Metrics & Architecture Stat Ribbon */}
+      <section className="axc-stat-ribbon">
+        <div className="container">
+          <div className="row g-4 text-center">
+            <div className="col-6 col-md-3">
+              <div className="axc-stat-item">
+                <div className="axc-stat-number">39 / 39</div>
+                <div className="axc-stat-label">Automated Tests Passing</div>
+              </div>
+            </div>
+            <div className="col-6 col-md-3">
+              <div className="axc-stat-item">
+                <div className="axc-stat-number">100%</div>
+                <div className="axc-stat-label">Server-Enforced RBAC</div>
+              </div>
+            </div>
+            <div className="col-6 col-md-3">
+              <div className="axc-stat-item">
+                <div className="axc-stat-number">8 KPIs</div>
+                <div className="axc-stat-label">&amp; 3 Live Chart Types</div>
+              </div>
+            </div>
+            <div className="col-6 col-md-3">
+              <div className="axc-stat-item">
+                <div className="axc-stat-number">Java 17</div>
+                <div className="axc-stat-label">Spring Boot 3 + React 19</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pre-Seeded Demo Accounts Section */}
+      <section id="demo" className="axc-landing-section axc-landing-section--light">
         <div className="container">
           <div className="text-center mb-5">
+            <span className="badge bg-primary-subtle text-primary fw-semibold px-3 py-2 rounded-pill mb-2">
+              ⚡ Instant Evaluation
+            </span>
             <h2 className="axc-section-heading">Pre-Seeded Demo Accounts</h2>
             <p className="axc-section-subheading mx-auto">
-              Test role-scoped authorization, manager oversight, and executive ownership directly with pre-configured accounts.
+              Test role-scoped authorization, team manager oversight, and executive ownership directly with 1 click.
             </p>
           </div>
 
           <div className="row g-4">
             {/* Sales Manager Card */}
             <div className="col-12 col-md-4">
-              <div className="axc-demo-card">
+              <div className="axc-demo-card axc-demo-card--manager">
                 <div className="d-flex align-items-center justify-content-between mb-3">
+                  <div className="axc-role-avatar bg-primary-subtle text-primary">
+                    <CustomersIcon />
+                  </div>
                   <span className="badge bg-primary-subtle text-primary fw-semibold px-2 py-1">
-                    Sales Manager
+                    Manager Access
                   </span>
-                  <small className="text-muted">Manager Access</small>
                 </div>
-                <h5 className="fw-bold mb-2">Sales Manager</h5>
+
+                <h4 className="fw-bold text-dark mb-1">Sales Manager</h4>
                 <p className="text-muted small mb-3">
-                  Team pipeline analytics, complete customer portfolio visibility, and manager-level user directory.
+                  Team pipeline analytics, portfolio customer oversight, and manager-level user directory.
                 </p>
-                <div className="p-2 rounded bg-light small mb-3">
-                  <div><strong>Email:</strong> <code>manager@acxiomcrm.local</code></div>
-                  <div><strong>Password:</strong> <code>Manager@123</code></div>
+
+                <div className="axc-cred-box">
+                  <div className="mb-1 text-muted small">Email: <code>manager@acxiomcrm.local</code></div>
+                  <div className="text-muted small">Password: <code>Manager@123</code></div>
                 </div>
+
                 <div className="mt-auto">
                   <button
                     type="button"
-                    className="btn btn-sm btn-axc-primary w-100"
+                    className="btn btn-primary w-100 py-2 fw-semibold"
+                    style={{ borderRadius: '10px' }}
                     disabled={Boolean(loggingInRole)}
                     onClick={() => handleQuickLogin('manager@acxiomcrm.local', 'Manager@123', 'Manager')}
                   >
-                    {loggingInRole === 'Manager' ? 'Signing in…' : '1-Click Sign In as Manager'}
+                    {loggingInRole === 'Manager' ? 'Signing in…' : '⚡ 1-Click Sign In as Manager'}
                   </button>
                 </div>
               </div>
@@ -187,29 +290,35 @@ export default function LandingPage() {
 
             {/* System Admin Card */}
             <div className="col-12 col-md-4">
-              <div className="axc-demo-card">
+              <div className="axc-demo-card axc-demo-card--admin">
                 <div className="d-flex align-items-center justify-content-between mb-3">
+                  <div className="axc-role-avatar bg-purple-subtle text-purple" style={{ backgroundColor: '#f3e8ff', color: '#7c3aed' }}>
+                    <UsersIcon />
+                  </div>
                   <span className="badge bg-danger-subtle text-danger fw-semibold px-2 py-1">
                     System Admin
                   </span>
-                  <small className="text-muted">Full Permissions</small>
                 </div>
-                <h5 className="fw-bold mb-2">Administrator</h5>
+
+                <h4 className="fw-bold text-dark mb-1">Administrator</h4>
                 <p className="text-muted small mb-3">
-                  Full system administration, user role assignments &amp; deactivations, and tamper-evident audit logs.
+                  Full system control, user role management &amp; deactivations, and security audit log inspection.
                 </p>
-                <div className="p-2 rounded bg-light small mb-3">
-                  <div><strong>Email:</strong> <code>admin@acxiomcrm.local</code></div>
-                  <div><strong>Password:</strong> <code>Admin@123</code></div>
+
+                <div className="axc-cred-box">
+                  <div className="mb-1 text-muted small">Email: <code>admin@acxiomcrm.local</code></div>
+                  <div className="text-muted small">Password: <code>Admin@123</code></div>
                 </div>
+
                 <div className="mt-auto">
                   <button
                     type="button"
-                    className="btn btn-sm btn-outline-axc w-100"
+                    className="btn text-white w-100 py-2 fw-semibold"
+                    style={{ background: '#7c3aed', borderRadius: '10px' }}
                     disabled={Boolean(loggingInRole)}
                     onClick={() => handleQuickLogin('admin@acxiomcrm.local', 'Admin@123', 'Admin')}
                   >
-                    {loggingInRole === 'Admin' ? 'Signing in…' : '1-Click Sign In as Admin'}
+                    {loggingInRole === 'Admin' ? 'Signing in…' : '⚡ 1-Click Sign In as Admin'}
                   </button>
                 </div>
               </div>
@@ -217,29 +326,35 @@ export default function LandingPage() {
 
             {/* Sales Executive Card */}
             <div className="col-12 col-md-4">
-              <div className="axc-demo-card">
+              <div className="axc-demo-card axc-demo-card--sales">
                 <div className="d-flex align-items-center justify-content-between mb-3">
+                  <div className="axc-role-avatar bg-success-subtle text-success">
+                    <OpportunitiesIcon />
+                  </div>
                   <span className="badge bg-success-subtle text-success fw-semibold px-2 py-1">
                     Sales Executive
                   </span>
-                  <small className="text-muted">Assigned Access</small>
                 </div>
-                <h5 className="fw-bold mb-2">Sales Executive</h5>
+
+                <h4 className="fw-bold text-dark mb-1">Sales Executive</h4>
                 <p className="text-muted small mb-3">
-                  Lead tracking, 1-click customer conversions, stage updates, scheduled follow-ups, and activity logs.
+                  Lead management, opportunity progression, scheduled follow-ups, and activity interaction logs.
                 </p>
-                <div className="p-2 rounded bg-light small mb-3">
-                  <div><strong>Email:</strong> <code>sales@acxiomcrm.local</code></div>
-                  <div><strong>Password:</strong> <code>Sales@123</code></div>
+
+                <div className="axc-cred-box">
+                  <div className="mb-1 text-muted small">Email: <code>sales@acxiomcrm.local</code></div>
+                  <div className="text-muted small">Password: <code>Sales@123</code></div>
                 </div>
+
                 <div className="mt-auto">
                   <button
                     type="button"
-                    className="btn btn-sm btn-outline-axc w-100"
+                    className="btn btn-success w-100 py-2 fw-semibold"
+                    style={{ borderRadius: '10px' }}
                     disabled={Boolean(loggingInRole)}
                     onClick={() => handleQuickLogin('sales@acxiomcrm.local', 'Sales@123', 'Sales')}
                   >
-                    {loggingInRole === 'Sales' ? 'Signing in…' : '1-Click Sign In as Sales Exec'}
+                    {loggingInRole === 'Sales' ? 'Signing in…' : '⚡ 1-Click Sign In as Sales Exec'}
                   </button>
                 </div>
               </div>
@@ -248,13 +363,16 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* CRM Modules Showcase */}
-      <section id="modules" className="axc-landing-section">
+      {/* CRM Modules Grid */}
+      <section id="modules" className="axc-landing-section axc-landing-section--light border-top">
         <div className="container">
           <div className="text-center mb-5">
-            <h2 className="axc-section-heading">Comprehensive CRM Modules</h2>
+            <span className="badge bg-secondary-subtle text-secondary fw-semibold px-3 py-2 rounded-pill mb-2">
+              Modular Capabilities
+            </span>
+            <h2 className="axc-section-heading">Engineered for the Full Sales Lifecycle</h2>
             <p className="axc-section-subheading mx-auto">
-              Every phase of customer engagement is modeled with strict business logic and validation rules.
+              Every stage of customer engagement is governed by server-side validation and atomic consistency.
             </p>
           </div>
 
@@ -264,9 +382,9 @@ export default function LandingPage() {
                 <div className="axc-feature-icon">
                   <CustomersIcon />
                 </div>
-                <h3 className="axc-feature-title">Customer 360&deg; Profiles</h3>
+                <h3 className="axc-feature-title">Customer 360&deg; Management</h3>
                 <p className="axc-feature-desc">
-                  Manage corporate and individual accounts with verified addresses, industry segmentation, status tracking, and linked opportunities.
+                  Maintain verified company and contact records with active status toggling, industry classification, and linked sales opportunities.
                 </p>
               </div>
             </div>
@@ -276,9 +394,9 @@ export default function LandingPage() {
                 <div className="axc-feature-icon">
                   <LeadsIcon />
                 </div>
-                <h3 className="axc-feature-title">Lead Qualification &amp; Conversion</h3>
+                <h3 className="axc-feature-title">Intelligent Lead Conversion</h3>
                 <p className="axc-feature-desc">
-                  Track prospect status from New to Qualified. Convert qualified leads into new Customers and Opportunities in a single atomic transaction.
+                  Capture inbound prospects, qualify interest, and execute a 1-click conversion into both a Customer account and active Opportunity.
                 </p>
               </div>
             </div>
@@ -290,7 +408,7 @@ export default function LandingPage() {
                 </div>
                 <h3 className="axc-feature-title">Stage-Weighted Pipeline</h3>
                 <p className="axc-feature-desc">
-                  Monitor deal stages (Qualification, Proposal, Negotiation, Won, Lost) with automated weighted revenue calculations based on stage probabilities.
+                  Track deals across Qualification, Proposal, Negotiation, Won, and Lost with automatic weighted value calculation.
                 </p>
               </div>
             </div>
@@ -300,9 +418,9 @@ export default function LandingPage() {
                 <div className="axc-feature-icon">
                   <FollowUpsIcon />
                 </div>
-                <h3 className="axc-feature-title">Follow-Up Reminders</h3>
+                <h3 className="axc-feature-title">Strict Follow-Up Rules</h3>
                 <p className="axc-feature-desc">
-                  Enforces strict business rules: rejects any follow-up scheduled in the past (&sect;17.19), tracks completed/canceled status, and logs audit events.
+                  Built-in validation rejecting past dates (&sect;17.19), automated reminders, status workflow, and permanent audit logging.
                 </p>
               </div>
             </div>
@@ -312,9 +430,9 @@ export default function LandingPage() {
                 <div className="axc-feature-icon">
                   <ActivitiesIcon />
                 </div>
-                <h3 className="axc-feature-title">Multi-Channel Activities</h3>
+                <h3 className="axc-feature-title">Multi-Channel Activity Logging</h3>
                 <p className="axc-feature-desc">
-                  Log calls, meetings, tasks, and email notes. Filter by type, date, and assigned user with rich notes and status tracking.
+                  Log phone calls, video meetings, tasks, and email notes. Search and filter by activity type, date range, and owner.
                 </p>
               </div>
             </div>
@@ -324,9 +442,9 @@ export default function LandingPage() {
                 <div className="axc-feature-icon">
                   <UsersIcon />
                 </div>
-                <h3 className="axc-feature-title">User &amp; Role Administration</h3>
+                <h3 className="axc-feature-title">Role-Based Access Control</h3>
                 <p className="axc-feature-desc">
-                  Admin-managed user onboarding, role transitions, active/inactive deactivation, and server-enforced role authorization.
+                  Complete user administration, role assignment (Admin/Manager/Sales), account lockouts, and row-level ownership isolation.
                 </p>
               </div>
             </div>
@@ -335,77 +453,76 @@ export default function LandingPage() {
       </section>
 
       {/* Analytics & KPI Showcase */}
-      <section id="analytics" className="axc-landing-section bg-white border-top border-bottom">
+      <section id="analytics" className="axc-landing-section bg-dark text-white border-top border-bottom" style={{ background: '#090e17' }}>
         <div className="container">
-          <div className="row align-items-center">
-            <div className="col-12 col-lg-6 mb-4 mb-lg-0">
-              <h2 className="axc-section-heading">8 Live KPI Cards &amp; 3 Analytics Charts</h2>
-              <p className="axc-section-subheading">
-                Instant executive oversight driven directly by authorized database queries &mdash; never static demo placeholders.
+          <div className="row align-items-center g-5">
+            <div className="col-12 col-lg-6">
+              <span className="badge bg-info-subtle text-info fw-semibold px-3 py-2 rounded-pill mb-3">
+                Live Data Intelligence
+              </span>
+              <h2 className="axc-section-heading text-white">8 Real-Time KPI Cards &amp; 3 Chart.js Visualizations</h2>
+              <p className="axc-section-subheading text-muted mb-4">
+                Executive analytics rendered from real authorized database queries &mdash; zero placeholder demo counts.
               </p>
 
-              <div className="row g-2 mb-4">
+              <div className="row g-3 mb-4">
                 <div className="col-6">
-                  <div className="p-3 bg-light rounded border">
-                    <div className="text-muted small">Customers &amp; Leads</div>
-                    <div className="fw-bold text-dark">Total &amp; Open Counts</div>
+                  <div className="p-3 rounded-3" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                    <div className="text-muted small">Total Customers &amp; Leads</div>
+                    <div className="fw-bold text-white fs-5 mt-1">Real-time DB Counts</div>
                   </div>
                 </div>
                 <div className="col-6">
-                  <div className="p-3 bg-light rounded border">
-                    <div className="text-muted small">Pipeline Deals</div>
-                    <div className="fw-bold text-dark">Won, Lost, &amp; Open</div>
+                  <div className="p-3 rounded-3" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                    <div className="text-muted small">Deal Velocity</div>
+                    <div className="fw-bold text-white fs-5 mt-1">Won vs. Lost Breakdown</div>
                   </div>
                 </div>
                 <div className="col-6">
-                  <div className="p-3 bg-light rounded border">
+                  <div className="p-3 rounded-3" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
                     <div className="text-muted small">Weighted Revenue</div>
-                    <div className="fw-bold text-dark">Probability Forecasts</div>
+                    <div className="fw-bold text-white fs-5 mt-1">Probability Forecasts</div>
                   </div>
                 </div>
                 <div className="col-6">
-                  <div className="p-3 bg-light rounded border">
-                    <div className="text-muted small">Visual Trend</div>
-                    <div className="fw-bold text-dark">Monthly Sales Line</div>
+                  <div className="p-3 rounded-3" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                    <div className="text-muted small">Revenue Velocity</div>
+                    <div className="fw-bold text-white fs-5 mt-1">6-Month Trend Line</div>
                   </div>
                 </div>
               </div>
 
-              <div className="d-flex gap-3">
-                <Link to="/dashboard" className="btn btn-axc-primary">
-                  View Real-Time Dashboard &rarr;
-                </Link>
-              </div>
+              <Link to="/dashboard" className="btn btn-lg axc-btn-glow px-4 py-3 rounded-3">
+                Inspect Real-Time Analytics &rarr;
+              </Link>
             </div>
 
             <div className="col-12 col-lg-6">
-              <div className="p-4 rounded-3 border bg-light shadow-sm">
+              <div className="p-4 rounded-4" style={{ background: 'rgba(15, 23, 42, 0.9)', border: '1px solid rgba(255,255,255,0.1)' }}>
                 <h6 className="fw-bold text-uppercase text-muted small mb-3">
-                  Supported Chart.js Visualizations
+                  Interactive Chart Breakdown
                 </h6>
-                <ul className="list-unstyled mb-0">
-                  <li className="d-flex align-items-center gap-2 mb-3">
+                <div className="p-3 rounded-3 mb-3" style={{ background: 'rgba(255,255,255,0.03)' }}>
+                  <div className="d-flex align-items-center gap-2 mb-1">
                     <span className="badge bg-primary">Chart 1</span>
-                    <div>
-                      <strong>Lead Status (Doughnut)</strong>
-                      <div className="text-muted small">Breakdown across New, Contacted, Qualified, Lost, Converted</div>
-                    </div>
-                  </li>
-                  <li className="d-flex align-items-center gap-2 mb-3">
+                    <strong className="text-white">Lead Status (Doughnut)</strong>
+                  </div>
+                  <p className="text-muted small mb-0">Segments prospects across New, Contacted, Qualified, Lost, and Converted.</p>
+                </div>
+                <div className="p-3 rounded-3 mb-3" style={{ background: 'rgba(255,255,255,0.03)' }}>
+                  <div className="d-flex align-items-center gap-2 mb-1">
                     <span className="badge bg-warning text-dark">Chart 2</span>
-                    <div>
-                      <strong>Opportunity Pipeline (Bar)</strong>
-                      <div className="text-muted small">Stage-by-stage progression from Qualification to Won</div>
-                    </div>
-                  </li>
-                  <li className="d-flex align-items-center gap-2">
+                    <strong className="text-white">Opportunity Pipeline (Bar)</strong>
+                  </div>
+                  <p className="text-muted small mb-0">Visualizes opportunity counts across all 5 deal progression stages.</p>
+                </div>
+                <div className="p-3 rounded-3" style={{ background: 'rgba(255,255,255,0.03)' }}>
+                  <div className="d-flex align-items-center gap-2 mb-1">
                     <span className="badge bg-info text-dark">Chart 3</span>
-                    <div>
-                      <strong>Monthly Sales (Line)</strong>
-                      <div className="text-muted small">Rolling 6-month won deal revenue velocity</div>
-                    </div>
-                  </li>
-                </ul>
+                    <strong className="text-white">Monthly Sales (Line)</strong>
+                  </div>
+                  <p className="text-muted small mb-0">Rolling 6-month historical won deal sales velocity.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -413,48 +530,51 @@ export default function LandingPage() {
       </section>
 
       {/* Security Architecture */}
-      <section id="security" className="axc-landing-section">
+      <section id="security" className="axc-landing-section axc-landing-section--light">
         <div className="container">
           <div className="text-center mb-5">
+            <span className="badge bg-danger-subtle text-danger fw-semibold px-3 py-2 rounded-pill mb-2">
+              Zero-Trust Protection
+            </span>
             <h2 className="axc-section-heading">Bank-Grade Security Architecture</h2>
             <p className="axc-section-subheading mx-auto">
-              Security is enforced at the controller and JPA query layer &mdash; not merely by hiding UI buttons.
+              Protection is enforced on every controller endpoint and query &mdash; not merely in the frontend.
             </p>
           </div>
 
           <div className="row g-4">
             <div className="col-12 col-md-3">
-              <div className="p-3 rounded border bg-white h-100">
-                <h6 className="fw-bold text-dark mb-2">BCrypt Hashing</h6>
+              <div className="p-4 rounded-4 border bg-white h-100 shadow-sm">
+                <h5 className="fw-bold text-dark mb-2">BCrypt Hashing</h5>
                 <p className="text-muted small mb-0">
-                  All passwords stored with salted, adaptive work-factor hashing. Plaintext credentials are never saved or logged.
+                  All passwords stored with adaptive, salted work factor. Plaintext credentials are never saved or exposed.
                 </p>
               </div>
             </div>
 
             <div className="col-12 col-md-3">
-              <div className="p-3 rounded border bg-white h-100">
-                <h6 className="fw-bold text-dark mb-2">CSRF Anti-Forgery</h6>
+              <div className="p-4 rounded-4 border bg-white h-100 shadow-sm">
+                <h5 className="fw-bold text-dark mb-2">Double-Submit CSRF</h5>
                 <p className="text-muted small mb-0">
-                  Double-submit cookie protection with automatic token validation on state-changing REST requests.
+                  Strict anti-forgery verification on all mutating requests. Cookie tokens are validated per session.
                 </p>
               </div>
             </div>
 
             <div className="col-12 col-md-3">
-              <div className="p-3 rounded border bg-white h-100">
-                <h6 className="fw-bold text-dark mb-2">Row-Level Isolation</h6>
+              <div className="p-4 rounded-4 border bg-white h-100 shadow-sm">
+                <h5 className="fw-bold text-dark mb-2">Ownership Isolation</h5>
                 <p className="text-muted small mb-0">
-                  Sales Executives can only access assigned records. Cross-ownership lookups return 404 to prevent resource probing.
+                  Sales Executives are restricted to their own assigned records. Cross-ownership returns 404 to block probing.
                 </p>
               </div>
             </div>
 
             <div className="col-12 col-md-3">
-              <div className="p-3 rounded border bg-white h-100">
-                <h6 className="fw-bold text-dark mb-2">Immutable Audit Log</h6>
+              <div className="p-4 rounded-4 border bg-white h-100 shadow-sm">
+                <h5 className="fw-bold text-dark mb-2">Immutable Audit Log</h5>
                 <p className="text-muted small mb-0">
-                  Every login, failure, record modification, deletion, and role change is permanently recorded for compliance.
+                  Logins, failures, lockouts, record modifications, and role updates are permanently recorded for compliance.
                 </p>
               </div>
             </div>
@@ -462,24 +582,24 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* CTA Footer Banner */}
+      {/* High-Impact CTA Banner */}
       <section className="container">
         <div className="axc-landing-cta">
-          <h2 className="fw-bold text-white mb-2">Accelerate Your CRM Operations Today</h2>
-          <p className="text-white-50 mb-4 mx-auto" style={{ maxWidth: '500px' }}>
-            Experience reliable customer engagement, pipeline forecasting, and verified compliance with AcxiomCRM.
+          <h2 className="fw-bold text-white mb-3" style={{ fontSize: '36px' }}>Ready to Supercharge Your Sales Pipeline?</h2>
+          <p className="text-light text-opacity-75 mb-4 mx-auto" style={{ maxWidth: '540px', fontSize: '16px' }}>
+            Experience verified customer engagement, weighted forecasting, and rock-solid compliance with AcxiomCRM.
           </p>
           <div className="d-flex justify-content-center gap-3">
             {user ? (
-              <Link to="/dashboard" className="btn btn-lg btn-axc-primary px-4">
-                Open Dashboard &rarr;
+              <Link to="/dashboard" className="btn btn-lg axc-btn-glow px-4 py-3 rounded-3">
+                Open CRM Workspace &rarr;
               </Link>
             ) : (
               <>
-                <Link to="/login" className="btn btn-lg btn-axc-primary px-4">
+                <Link to="/login" className="btn btn-lg axc-btn-glow px-4 py-3 rounded-3">
                   Sign In Now
                 </Link>
-                <Link to="/register" className="btn btn-lg btn-outline-light px-4">
+                <Link to="/register" className="btn btn-lg btn-outline-light px-4 py-3 rounded-3">
                   Create Free Account
                 </Link>
               </>
@@ -488,20 +608,21 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Modern Dark Footer */}
       <footer className="axc-landing-footer mt-auto">
         <div className="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
           <div className="d-flex align-items-center gap-2">
             <span className="axc-brand-mark" aria-hidden="true" />
-            <span className="fw-semibold text-white">AcxiomCRM</span>
-            <span className="text-muted">&copy; 2026 All rights reserved.</span>
+            <span className="fw-bold text-white">AcxiomCRM</span>
+            <span className="text-muted ms-2">&copy; 2026 Enterprise Edition. All rights reserved.</span>
           </div>
 
-          <div className="d-flex gap-4 small text-muted">
+          <div className="d-flex gap-4 text-muted" style={{ fontSize: '13px' }}>
             <a href="#features" className="text-muted text-decoration-none">Features</a>
-            <a href="#demo" className="text-muted text-decoration-none">Demo</a>
+            <a href="#demo" className="text-muted text-decoration-none">Demo Logins</a>
+            <a href="#analytics" className="text-muted text-decoration-none">Analytics</a>
             <a href="#security" className="text-muted text-decoration-none">Security</a>
-            <Link to="/login" className="text-muted text-decoration-none">Login</Link>
+            <Link to="/login" className="text-muted text-decoration-none">Sign In</Link>
           </div>
         </div>
       </footer>
